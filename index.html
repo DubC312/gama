@@ -1,0 +1,62 @@
+<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#0d47a1"><title>Game-Mathe-Sammler</title><style>
+:root{--b:#0d47a1;--b2:#1976d2;--bg:#eaf4fc;--ink:#17324d;--gold:#ffd54f}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,sans-serif;background:linear-gradient(#dbeeff,#f7fbff);color:var(--ink);min-height:100vh}
+.top{background:linear-gradient(135deg,#082f6b,#1976d2);color:#fff;padding:18px;text-align:center;position:sticky;top:0;z-index:4;box-shadow:0 3px 12px #0003}
+.top h1{margin:0;font-size:25px}.wrap{max-width:980px;margin:auto;padding:16px}
+.panel{background:#fff;border-radius:20px;padding:16px;margin:12px 0;box-shadow:0 5px 18px #1232}
+.row{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.btn{border:0;border-radius:14px;padding:12px 16px;font-weight:800;background:#d9eafa;color:#123;cursor:pointer}
+.btn.on,.btn.primary{background:var(--b2);color:#fff}.btn.gold{outline:3px solid #f0b400}
+.question{font-size:42px;font-weight:900;text-align:center;margin:18px}
+.answer{display:block;margin:0 auto;width:min(260px,90%);font-size:30px;text-align:center;padding:12px;border:3px solid #9ec5e8;border-radius:16px}
+.status{text-align:center;font-weight:800;margin:10px}.album-tabs{display:flex;gap:8px;overflow:auto;padding-bottom:5px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:12px}
+.card{position:relative;min-height:255px;border-radius:18px;padding:9px;border:4px solid #7aaad3;box-shadow:0 5px 12px #0002;overflow:hidden;transition:.2s transform}
+.card:not(.locked):hover{transform:translateY(-2px)}
+.card.locked{filter:grayscale(1);opacity:.42}
+.card img{width:100%;height:140px;object-fit:contain;border-radius:12px}
+.picFallback{height:140px;display:grid;place-items:center;font-size:64px;border-radius:12px}
+.card.minecraft{background:linear-gradient(145deg,#eef7df,#cde7ae);border-color:#4f772d!important}
+.card.minecraft img,.card.minecraft .picFallback{background:linear-gradient(#b7d88a,#e7f4d4);image-rendering:auto}
+.card.wobblylife{background:linear-gradient(145deg,#fff8b5,#ffd84d);border-color:#f0a500!important}
+.card.wobblylife img,.card.wobblylife .picFallback{background:linear-gradient(#fff9d6,#ffe67b)}
+.card.marioodyssey{background:linear-gradient(145deg,#fff,#dff0ff);border-color:#e53935!important;box-shadow:0 5px 12px #0002,inset 0 0 0 2px #1976d233}
+.card.marioodyssey img,.card.marioodyssey .picFallback{background:linear-gradient(135deg,#fff,#dceeff)}
+.gameBadge{display:inline-block;margin:4px auto 0;padding:3px 8px;border-radius:999px;font-size:10px;font-weight:900}
+.minecraft .gameBadge{background:#4f772d;color:#fff}.wobblylife .gameBadge{background:#f0a500;color:#342500}.marioodyssey .gameBadge{background:#e53935;color:#fff}
+.name{font-size:17px;font-weight:900;text-align:center;margin-top:5px}.type{text-align:center;font-size:12px;opacity:.75}
+.stats{display:flex;justify-content:space-around;font-size:12px;font-weight:800;margin-top:7px}
+.lock{position:absolute;inset:0;display:grid;place-items:center;font-size:34px;background:#1233}
+.reward{position:fixed;inset:0;background:#001b;display:none;place-items:center;z-index:10;padding:20px}.reward.show{display:grid}
+.reward .box{background:#fff;border-radius:24px;padding:20px;max-width:330px;width:100%;text-align:center}.reward .card{max-width:220px;margin:auto}
+.small{font-size:12px;opacity:.72;text-align:center}h2{text-align:center}.hidden{display:none}
+.sourceNote{margin-top:10px;padding:10px 12px;border-radius:12px;background:#eef6ff;font-size:12px;text-align:center}
+@media(max-width:500px){.question{font-size:34px}.grid{grid-template-columns:repeat(2,1fr)}}
+</style></head><body><header class="top"><h1>🎮 Game-Mathe-Sammler</h1><div>Rechnen · Karten gewinnen · Album füllen</div></header><main class="wrap">
+<section class="panel" id="setup"><h2>Rechentraining</h2><div class="row" id="ops"></div><h3 style="text-align:center">Dauer</h3><div class="row" id="times"></div><div class="row" style="margin-top:15px"><button class="btn primary" id="start">▶ Start</button></div></section>
+<section class="panel hidden" id="quiz"><div class="status"><span id="clock">05:00</span> · Richtig: <span id="correct">0</span> · Karte bei <span id="goal">10</span></div><div class="question" id="q">3 × 4</div><input class="answer" id="ans" inputmode="numeric" autocomplete="off"><div class="row" style="margin-top:12px"><button class="btn primary" id="ok">Prüfen</button><button class="btn" id="stop">Abbrechen</button></div><div class="status" id="msg"></div></section>
+<section class="panel"><h2>🏆 Sammelalbum</h2><div class="album-tabs" id="tabs"></div><p class="small" id="count"></p><div class="grid" id="grid"></div><div class="sourceNote">Minecraft-Bilder: Minecraft Wiki. Mario-Odyssey-Bilder werden direkt über verifizierte Dateien des Super Mario Wiki geladen. Für Wobbly Life bleibt bei nicht zuverlässig verlinkbaren Figuren automatisch das Emoji als Platzhalter.</div></section></main>
+<div class="reward" id="reward"><div class="box"><h2>🎉 Neue Karte!</h2><div id="rewardCard"></div><button class="btn primary" onclick="closeReward()">Weiter</button></div></div>
+<script>
+let cards=[],game='minecraft',owned=new Set(JSON.parse(localStorage.getItem('gameMathOwned')||'[]'));let op='mul',mins=5,seconds=0,timer=null,current=null,tries=0,correct=0,nextReward=10;
+const games={minecraft:'⛏️ Minecraft',wobblylife:'🟡 Wobbly Life',marioodyssey:'🍄 Mario Odyssey'};
+const ops=[['mul','Mal'],['add','Plus'],['sub','Minus'],['div','Geteilt'],['rest','Rest'],['point','Punkt vor Strich'],['mix','Mix']];
+function imageUrl(c){if(c.imgUrl)return c.imgUrl;if(c.game==='minecraft')return `https://minecraft.wiki/w/Special:FilePath/${encodeURIComponent(c.img)}.png`;return ''}
+function stats(c){if(c.game==='minecraft')return `❤️ ${c.hp??'-'}　⚔️ ${c.atk??'-'}`;return `💪 ${c.power??'-'}　⚡ ${c.speed??'-'}　🎯 ${c.skill??'-'}`}
+function cardHTML(c,locked=false){let u=imageUrl(c),label=games[c.game]||'🎮 Spiel';return `<div class="card ${c.game||''} ${locked?'locked':''}">${u?`<img src="${u}" alt="${c.name}" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><div class="picFallback" style="display:none">${c.emoji||'🎮'}</div>`:`<div class="picFallback">${c.emoji||'🎮'}</div>`}<div class="name">${c.name}</div><div class="type">${c.type||c.mob||'Figur'}</div><div style="text-align:center"><span class="gameBadge">${label}</span></div><div class="stats">${stats(c)}</div>${locked?'<div class="lock">🔒</div>':''}</div>`}
+function renderAlbum(){document.getElementById('tabs').innerHTML=Object.entries(games).map(([k,v])=>`<button class="btn ${game===k?'on':''}" onclick="game='${k}';renderAlbum()">${v}</button>`).join('');let a=cards.filter(c=>c.game===game);document.getElementById('count').textContent=`${a.filter(c=>owned.has(c.id)).length} von ${a.length} Karten gesammelt`;document.getElementById('grid').innerHTML=a.map(c=>cardHTML(c,!owned.has(c.id))).join('')}
+function buildControls(){document.getElementById('ops').innerHTML=ops.map(([k,n])=>`<button class="btn ${op===k?'on':''} ${['point','mix'].includes(k)?'gold':''}" onclick="op='${k}';buildControls()">${n}</button>`).join('');document.getElementById('times').innerHTML=[5,7,10,15].map(n=>`<button class="btn ${mins===n?'on':''}" onclick="mins=${n};buildControls()">${n} Min</button>`).join('')}
+const ri=(a,b)=>Math.floor(Math.random()*(b-a+1))+a;
+function make(kind){if(kind==='mix')kind=['mul','add','sub','div','rest','point'][ri(0,5)];let a,b,c,txt,val;if(kind==='mul'){a=ri(2,12);b=ri(2,12);txt=`${a} × ${b}`;val=a*b}else if(kind==='add'){a=ri(5,80);b=ri(2,100-a);txt=`${a} + ${b}`;val=a+b}else if(kind==='sub'){a=ri(10,100);b=ri(1,a);txt=`${a} − ${b}`;val=a-b}else if(kind==='div'){b=ri(2,12);val=ri(2,12);a=b*val;txt=`${a} ÷ ${b}`}else if(kind==='rest'){b=ri(2,12);val=ri(0,b-1);a=b*ri(2,9)+val;txt=`${a} : ${b} → Rest ?`}else{a=ri(1,20);b=ri(2,9);c=ri(2,9);if(Math.random()<.5){txt=`${a} + ${b} × ${c}`;val=a+b*c}else{let prod=b*c;if(prod>a){a=ri(prod,100)}txt=`${a} − ${b} × ${c}`;val=a-prod}}return{txt,val}}
+function newQ(){current=make(op);tries=0;document.getElementById('q').textContent=current.txt;document.getElementById('ans').value='';document.getElementById('msg').textContent='';document.getElementById('ans').focus()}
+function rewardGoal(){return ['point','mix'].includes(op)?5:10}
+function start(){correct=0;nextReward=rewardGoal();seconds=mins*60;document.getElementById('goal').textContent=nextReward;document.getElementById('correct').textContent=0;document.getElementById('setup').classList.add('hidden');document.getElementById('quiz').classList.remove('hidden');tick();timer=setInterval(()=>{seconds--;tick();if(seconds<=0)finish()},1000);newQ()}
+function tick(){let m=Math.floor(seconds/60),s=seconds%60;document.getElementById('clock').textContent=`${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`}
+function check(){let v=Number(document.getElementById('ans').value);if(document.getElementById('ans').value.trim()==='')return;if(v===current.val){correct++;document.getElementById('correct').textContent=correct;document.getElementById('msg').textContent='✅ Richtig!';if(correct>=nextReward){giveCard();nextReward+=rewardGoal();document.getElementById('goal').textContent=nextReward}setTimeout(newQ,350)}else{tries++;if(tries>=2){document.getElementById('msg').textContent=`❌ Lösung: ${current.val}`;setTimeout(newQ,900)}else{document.getElementById('msg').textContent='Noch einmal versuchen!';document.getElementById('ans').select()}}}
+function giveCard(){let pool=cards.filter(c=>!owned.has(c.id));if(!pool.length)return;let c=pool[ri(0,pool.length-1)];owned.add(c.id);localStorage.setItem('gameMathOwned',JSON.stringify([...owned]));document.getElementById('rewardCard').innerHTML=cardHTML(c,false);document.getElementById('reward').classList.add('show');renderAlbum()}
+function closeReward(){document.getElementById('reward').classList.remove('show');document.getElementById('ans').focus()}
+function finish(){clearInterval(timer);timer=null;document.getElementById('quiz').classList.add('hidden');document.getElementById('setup').classList.remove('hidden')}
+document.getElementById('start').onclick=start;document.getElementById('ok').onclick=check;document.getElementById('stop').onclick=finish;document.getElementById('ans').addEventListener('keydown',e=>{if(e.key==='Enter')check()});
+fetch('cards.json',{cache:'no-store'}).then(r=>r.json()).then(x=>{cards=x;renderAlbum()}).catch(e=>{document.getElementById('count').textContent='cards.json konnte nicht geladen werden.'});buildControls();
+</script></body></html>
