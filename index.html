@@ -626,6 +626,20 @@ body.meme67-shake .ipad-tip{
 }
 .game-card.marioodyssey .stat span{color:#8b1515}
 
+
+/* Wobbly Life V5: lebendige Karten */
+.game-card.wobblylife{position:relative;overflow:hidden;background:linear-gradient(155deg,#fff58a,#ffd84d 48%,#f4b52e);border:4px solid #fff3b0;border-radius:24px}
+.game-card.wobblylife::before{content:"";position:absolute;left:-12%;right:-12%;bottom:-7%;height:30%;background:linear-gradient(#75d06a,#3fae5c);border-radius:50% 50% 0 0/35% 35% 0 0;opacity:.9;pointer-events:none}
+.game-card.wobblylife::after{content:"☁️  ☁️";position:absolute;left:7%;right:7%;top:18%;font-size:24px;letter-spacing:30px;opacity:.45;pointer-events:none}
+.game-card.wobblylife .photo{position:relative;overflow:hidden;background:linear-gradient(#69c9ff 0 58%,#8ee06d 58% 78%,#56bd62 78%)}
+.game-card.wobblylife .photo::before{content:"🏠  🌳  🚗";position:absolute;left:0;right:0;bottom:7px;text-align:center;font-size:22px;opacity:.55}
+.game-card.wobblylife .photo img{position:relative;z-index:2}
+.game-card.wobblylife .wobbly-scene{position:relative;z-index:2;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.game-card.wobblylife .wobbly-scene .hero{font-size:68px;line-height:1;filter:drop-shadow(0 4px 2px rgba(0,0,0,.18));animation:wobblyBob 2.4s ease-in-out infinite}
+.game-card.wobblylife .wobbly-scene .scene{margin-top:8px;padding:3px 9px;border-radius:999px;background:rgba(255,255,255,.78);color:#684b00;font-size:12px;font-weight:900}
+@keyframes wobblyBob{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-5px) rotate(2deg)}}
+@media(prefers-reduced-motion:reduce){.game-card.wobblylife .wobbly-scene .hero{animation:none}}
+
 </style>
 </head>
 
@@ -1111,6 +1125,13 @@ async function info(p){
 function gameLabel(g){
   return g==='minecraft'?'Minecraft':g==='wobblylife'?'Wobbly Life':g==='marioodyssey'?'Mario Odyssey':(g||'Game');
 }
+
+function wobblyScene(p){
+  if(p.game!=='wobblylife' || p.imgUrl) return '';
+  const icon=p.sceneEmoji||'🌈', label=p.sceneLabel||'Wobbly Life';
+  return `<div class="wobbly-scene"><div class="hero">${p.emoji||'🟡'}</div><div class="scene">${icon} ${label}</div></div>`;
+}
+
 function gameImage(p){
   if(p.imgUrl)return p.imgUrl;
   if(p.game==='minecraft'&&p.img)

@@ -1245,7 +1245,7 @@
     "imageSource": "minecraftwiki",
     "imagePage": "https://minecraft.wiki/w/Special:FilePath/Steve.png"
   },
-    {
+  {
     "id": 91,
     "name": "Alex",
     "mob": "Spieler",
@@ -1285,8 +1285,9 @@
     "emoji": "🟡",
     "color": "#f2c94c",
     "img": "Player_Wobbly",
-    "imageSource": "placeholder",
-    "imagePage": "https://wobbly-life.fandom.com/wiki/Wobbly_Life_Wiki"
+    "imageSource": "Shapes – Wobbly Life Characters",
+    "imagePage": "https://shapes.inc/fandom/wobbly-life/characters",
+    "imgUrl": "https://sxhodsrixg8meuri.public.blob.vercel-storage.com/fandom-lore/characters/wobbly-life/the-player-wobbly-12f4df3ea028.jpg"
   },
   {
     "id": 103,
@@ -1299,8 +1300,9 @@
     "emoji": "🧪",
     "color": "#f2c94c",
     "img": "The_Scientist",
-    "imageSource": "placeholder",
-    "imagePage": "https://wobbly-life.fandom.com/wiki/Wobbly_Life_Wiki"
+    "imageSource": "Shapes – Wobbly Life Characters",
+    "imagePage": "https://shapes.inc/fandom/wobbly-life/characters",
+    "imgUrl": "https://sxhodsrixg8meuri.public.blob.vercel-storage.com/fandom-lore/characters/wobbly-life/the-scientist-10513b10de65.jpg"
   },
   {
     "id": 104,
@@ -1313,8 +1315,9 @@
     "emoji": "🏛️",
     "color": "#f2c94c",
     "img": "Museum_Curator",
-    "imageSource": "placeholder",
-    "imagePage": "https://wobbly-life.fandom.com/wiki/Wobbly_Life_Wiki"
+    "imageSource": "Shapes – Wobbly Life Characters",
+    "imagePage": "https://shapes.inc/fandom/wobbly-life/characters",
+    "imgUrl": "https://sxhodsrixg8meuri.public.blob.vercel-storage.com/fandom-lore/characters/wobbly-life/museum-curator-57b01033fed9.jpg"
   },
   {
     "id": 105,
@@ -1327,8 +1330,9 @@
     "emoji": "👩",
     "color": "#f2c94c",
     "img": "Auntie",
-    "imageSource": "placeholder",
-    "imagePage": "https://wobbly-life.fandom.com/wiki/Wobbly_Life_Wiki"
+    "imageSource": "Shapes – Wobbly Life Characters",
+    "imagePage": "https://shapes.inc/fandom/wobbly-life/characters",
+    "imgUrl": "https://sxhodsrixg8meuri.public.blob.vercel-storage.com/fandom-lore/characters/wobbly-life/auntie-27fe7bb73171.jpg"
   },
   {
     "id": 106,
@@ -1341,8 +1345,9 @@
     "emoji": "🟣",
     "color": "#f2c94c",
     "img": "Jelly_Man",
-    "imageSource": "placeholder",
-    "imagePage": "https://wobbly-life.fandom.com/wiki/Wobbly_Life_Wiki"
+    "imageSource": "Steam Community – Wobbly Life",
+    "imagePage": "https://steamcommunity.com/app/1211020/screenshots/",
+    "imgUrl": "https://images.steamusercontent.com/ugc/10435287257711210879/BF223F42D6B3757645B4DC2F9AEF97177F5CA16E/?ima=fit&imcolor=%23000000&impolicy=Letterbox&imw=1024&letterbox=false"
   },
   {
     "id": 107,
@@ -1355,8 +1360,9 @@
     "emoji": "🌦️",
     "color": "#f2c94c",
     "img": "Weather_Scientist",
-    "imageSource": "placeholder",
-    "imagePage": "https://wobbly-life.fandom.com/wiki/Wobbly_Life_Wiki"
+    "imageSource": "Steam / Wobbly Life Update 0.9.1",
+    "imagePage": "https://steamdb.info/patchnotes/12237517/",
+    "imgUrl": "https://clan.fastly.steamstatic.com/images/37678930/231d555e90fde23c6aef476110647684e87c252b.png"
   },
   {
     "id": 108,
@@ -1369,8 +1375,9 @@
     "emoji": "👽",
     "color": "#f2c94c",
     "img": "Alien",
-    "imageSource": "placeholder",
-    "imagePage": "https://wobbly-life.fandom.com/wiki/Wobbly_Life_Wiki"
+    "imageSource": "Steam – Wobbly Life",
+    "imagePage": "https://help.steampowered.com/en/wizard/HelpWithGameTechnicalIssue?appid=1211020",
+    "imgUrl": "https://steamuserimages-a.akamaihd.net/ugc/1678121283448541174/BCF7C819103B12FD874B3CB3F609D85B346D89CC/"
   },
   {
     "id": 109,
@@ -1425,8 +1432,9 @@
     "emoji": "🧑‍🚒",
     "color": "#f2c94c",
     "img": "Firefighter",
-    "imageSource": "placeholder",
-    "imagePage": "https://wobbly-life.fandom.com/wiki/Wobbly_Life_Wiki"
+    "imageSource": "Steam Store – Wobbly Life",
+    "imagePage": "https://store.steampowered.com/app/1211020/Wobbly_Life/",
+    "imgUrl": "https://cdn.cloudflare.steamstatic.com/steam/apps/1211020/ss_16142052052dbd86c93519a5f0d1f90a0d7a4d51.1920x1080.jpg?t=1660806509"
   },
   {
     "id": 113,
@@ -1467,8 +1475,9 @@
     "emoji": "⛏️",
     "color": "#f2c94c",
     "img": "Miner",
-    "imageSource": "placeholder",
-    "imagePage": "https://wobbly-life.fandom.com/wiki/Wobbly_Life_Wiki"
+    "imageSource": "LaunchBox Games Database – Wobbly Life",
+    "imagePage": "https://gamesdb.launchbox-app.com/games/images/168555-wobbly-life",
+    "imgUrl": "https://images.launchbox-app.com/dd78063d-41f8-41ff-b85e-8f04ea5fb06a.jpg"
   },
   {
     "id": 116,
@@ -1481,8 +1490,9 @@
     "emoji": "🍕",
     "color": "#f2c94c",
     "img": "Pizza_Worker",
-    "imageSource": "placeholder",
-    "imagePage": "https://wobbly-life.fandom.com/wiki/Wobbly_Life_Wiki"
+    "imageSource": "Argos – Wobbly Life screenshot",
+    "imagePage": "https://www.argos.co.uk/product/7767779",
+    "imgUrl": "https://media.4rgos.it/i/Argos/7767779_R_Z004A"
   },
   {
     "id": 117,
@@ -1495,8 +1505,9 @@
     "emoji": "🚕",
     "color": "#f2c94c",
     "img": "Taxi_Driver",
-    "imageSource": "placeholder",
-    "imagePage": "https://wobbly-life.fandom.com/wiki/Wobbly_Life_Wiki"
+    "imageSource": "Steam Store – Wobbly Life",
+    "imagePage": "https://store.steampowered.com/app/1211020/Wobbly_Life/",
+    "imgUrl": "https://cdn.akamai.steamstatic.com/steam/apps/1211020/ss_3a019db8af3ff6a1455bcd2a5ae520aec1e3086f.1920x1080.jpg?t=1656085991"
   },
   {
     "id": 118,
@@ -1509,8 +1520,9 @@
     "emoji": "🗺️",
     "color": "#f2c94c",
     "img": "Treasure_Hunter",
-    "imageSource": "placeholder",
-    "imagePage": "https://wobbly-life.fandom.com/wiki/Wobbly_Life_Wiki"
+    "imageSource": "Steam Community – Wobbly Life",
+    "imagePage": "https://steamcommunity.com/sharedfiles/filedetails/?id=2594010035",
+    "imgUrl": "https://images.steamusercontent.com/ugc/1680394423509716224/F1A1F638B0A69EA71888F566C23A772D9EE4122F/"
   },
   {
     "id": 119,
@@ -1523,8 +1535,9 @@
     "emoji": "🧑‍🚀",
     "color": "#f2c94c",
     "img": "Astronaut",
-    "imageSource": "placeholder",
-    "imagePage": "https://wobbly-life.fandom.com/wiki/Wobbly_Life_Wiki"
+    "imageSource": "GamerHour – Wobbly Life Space Update guide",
+    "imagePage": "https://gamerhour.net/guides/wobbly-life-how-to-unlock-all-secret-items-in-the-space-update/",
+    "imgUrl": "https://gamerhour.net/wp-content/uploads/2025/10/14.jpg"
   },
   {
     "id": 120,
@@ -1537,8 +1550,9 @@
     "emoji": "🍦",
     "color": "#f2c94c",
     "img": "Ice_Cream_Worker",
-    "imageSource": "placeholder",
-    "imagePage": "https://wobbly-life.fandom.com/wiki/Wobbly_Life_Wiki"
+    "imageSource": "Steam Community – Wobbly Life",
+    "imagePage": "https://steamcommunity.com/app/1211020/screenshots/",
+    "imgUrl": "https://images.steamusercontent.com/ugc/11428296934570298603/F361E3CE9055A66C6392DB9EA7DC3A6A3D97928C/?ima=fit&imcolor=%23000000&impolicy=Letterbox&imw=1024&letterbox=false"
   },
   {
     "id": 201,
