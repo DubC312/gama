@@ -540,6 +540,92 @@ body.meme67-shake .ipad-tip{
 .game-card .photo img{width:100%;height:100%;object-fit:contain}
 .game-card .stats{grid-template-columns:repeat(3,1fr)}
 .game-card .pos{max-width:105px;text-align:right}
+
+/* ===== Spiel-spezifische Belohnungskarten ===== */
+
+/* Minecraft: Gras/Erde, kantig und pixelig */
+.game-card.minecraft{
+  background:
+    linear-gradient(#69a84f 0 10%, #7a4d2b 10% 100%);
+  border:4px solid #3d6f32;
+  border-radius:5px;
+  box-shadow:inset 0 0 0 2px rgba(255,255,255,.18),0 6px 16px rgba(0,0,0,.28);
+}
+.game-card.minecraft .top,
+.game-card.minecraft .name,
+.game-card.minecraft .rarity{
+  background:#4d8c57;
+  color:#fff;
+  border-radius:2px;
+}
+.game-card.minecraft .photo{
+  background:linear-gradient(#8fd3ff 0 55%,#72b957 55% 65%,#76502e 65%);
+  border:3px solid #49341f;
+  border-radius:2px;
+  image-rendering:pixelated;
+}
+.game-card.minecraft .team{color:#f7e5bd}
+.game-card.minecraft .stat{background:#e7d4ad;border:2px solid #5b4027;border-radius:2px;color:#332315}
+.game-card.minecraft .stat span{color:#604323}
+
+/* Wobbly Life: gelb, weich, verspielt */
+.game-card.wobblylife{
+  background:linear-gradient(145deg,#fff59d,#f4c542 55%,#f0a92e);
+  border:4px solid #fff3b0;
+  border-radius:24px;
+  box-shadow:0 7px 18px rgba(100,70,0,.25),inset 0 0 18px rgba(255,255,255,.4);
+}
+.game-card.wobblylife .top,
+.game-card.wobblylife .name,
+.game-card.wobblylife .rarity{
+  background:rgba(255,255,255,.58);
+  color:#684b00;
+  border-radius:14px;
+}
+.game-card.wobblylife .photo{
+  background:radial-gradient(circle at 50% 35%,#fffde0,#ffe16a 65%,#f5b832);
+  border:3px solid rgba(255,255,255,.8);
+  border-radius:20px;
+}
+.game-card.wobblylife .team{color:#664b08}
+.game-card.wobblylife .stat{
+  background:rgba(255,255,255,.68);
+  border:2px solid #d69e1f;
+  border-radius:12px;
+  color:#604500;
+}
+.game-card.wobblylife .stat span{color:#8b6500}
+
+/* Super Mario Odyssey: rot, weiß, gold – Reise/Abenteuer */
+.game-card.marioodyssey{
+  background:
+    radial-gradient(circle at 88% 12%,rgba(255,255,255,.35) 0 5%,transparent 6%),
+    linear-gradient(145deg,#e53935,#b71c1c 58%,#7f1010);
+  border:4px solid #f6d36b;
+  border-radius:18px;
+  box-shadow:0 7px 18px rgba(80,0,0,.3),inset 0 0 0 2px rgba(255,255,255,.18);
+}
+.game-card.marioodyssey .top,
+.game-card.marioodyssey .name,
+.game-card.marioodyssey .rarity{
+  background:#fff;
+  color:#b71c1c;
+  border-radius:10px;
+}
+.game-card.marioodyssey .photo{
+  background:linear-gradient(#7ec8ff 0 58%,#f6e5b6 58% 100%);
+  border:3px solid #f6d36b;
+  border-radius:14px;
+}
+.game-card.marioodyssey .team{color:#fff4d2}
+.game-card.marioodyssey .stat{
+  background:#fff;
+  border:2px solid #f6d36b;
+  border-radius:10px;
+  color:#b71c1c;
+}
+.game-card.marioodyssey .stat span{color:#8b1515}
+
 </style>
 </head>
 

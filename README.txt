@@ -1,15 +1,9 @@
-Gamer-Mathe-Trainer – bereinigte lila Version V3
+Gamer-Mathe-Trainer V4
 
-Änderungen:
-- CSS-Variablen --green* vollständig in --purple* umbenannt
-- verbliebene blaue/grüne Grundfarben auf die lila Palette vereinheitlicht
-- Gamer-Bezeichnungen statt alter Fußball-/Grün-Bezeichnungen
-- Gold/Silber/Bronze- und Kartenakzente bewusst nicht pauschal verändert
-- cards.json unverändert übernommen
-- 140 Belohnungskarten
-- neuer PWA-Cache: gamer-mathe-v3
+Neues Kartendesign:
+- Minecraft: Gras-/Erde-Look, kantige Pixel-Optik
+- Wobbly Life: gelb, rund und verspielt
+- Super Mario Odyssey: rot/weiß/goldener Abenteuer-Look
 
-Für GitHub Pages diese Dateien ersetzen:
-- index.html
-- cards.json
-- service-worker.js
+Das lila Grunddesign der App bleibt erhalten.
+Die cards.json mit 140 Belohnungskarten wurde unverändert übernommen.

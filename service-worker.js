@@ -1,4 +1,4 @@
-const CACHE_NAME='gamer-mathe-v3';
+const CACHE_NAME='gamer-mathe-v4';
 const FILES=['./','./index.html','./cards.json'];
 
 self.addEventListener('install',e=>{
