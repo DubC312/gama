@@ -3,76 +3,1164 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Zocker-Mathe</title>
+<title>Gamer-Mathe-Trainer</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Zocker-Mathe">
-<meta name="theme-color" content="##5b2a86">
+<meta name="apple-mobile-web-app-title" content="Ultimate Fußball-Mathe">
+<meta name="theme-color" content="#512da8">
 <meta name="format-detection" content="telephone=no">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
-
-
 <style>
-:root{--b:#5b2a86;--b2:#7e57c2;--bg:#f3ecfa;--ink:#3e2855;--gold:#ffd54f}
+:root{
+  --green:#6f42c1;
+  --green-dark:#512da8;
+  --green-deep:#311b69;
+  --paper:rgba(255,255,255,.94);
+  --text:#3e2855;
+}
 *{box-sizing:border-box}
-body{margin:0;font-family:system-ui,-apple-system,sans-serif;background:linear-gradient(#eee3f8,#f7fbff);color:var(--ink);min-height:100vh}
-.top{background:linear-gradient(135deg,#35145f,#7e57c2);color:#fff;padding:18px;text-align:center;position:sticky;top:0;z-index:4;box-shadow:0 3px 12px #0003}
-.top h1{margin:0;font-size:25px}.wrap{max-width:980px;margin:auto;padding:16px}
-.panel{background:#fff;border-radius:20px;padding:16px;margin:12px 0;box-shadow:0 5px 18px #1232}
-.row{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
-.btn{border:0;border-radius:14px;padding:12px 16px;font-weight:800;background:#eadcf7;color:#123;cursor:pointer}
-.btn.on,.btn.primary{background:var(--b2);color:#fff}.btn.gold{outline:3px solid #f0b400}
-.question{font-size:42px;font-weight:900;text-align:center;margin:18px}
-.answer{display:block;margin:0 auto;width:min(260px,90%);font-size:30px;text-align:center;padding:12px;border:3px solid #c5a8df;border-radius:16px}
-.status{text-align:center;font-weight:800;margin:10px}.album-tabs{display:flex;gap:8px;overflow:auto;padding-bottom:5px}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:12px}
-.card{position:relative;min-height:255px;border-radius:18px;padding:9px;border:4px solid #9b77bd;box-shadow:0 5px 12px #0002;overflow:hidden;transition:.2s transform}
-.card:not(.locked):hover{transform:translateY(-2px)}
-.card.locked{filter:grayscale(1);opacity:.42}
-.card img{width:100%;height:140px;object-fit:contain;border-radius:12px}
-.picFallback{height:140px;display:grid;place-items:center;font-size:64px;border-radius:12px}
-.card.minecraft{background:linear-gradient(145deg,#eef7df,#cde7ae);border-color:#4f772d!important}
-.card.minecraft img,.card.minecraft .picFallback{background:linear-gradient(#b7d88a,#e7f4d4);image-rendering:auto}
-.card.wobblylife{background:linear-gradient(145deg,#fff8b5,#ffd84d);border-color:#f0a500!important}
-.card.wobblylife img,.card.wobblylife .picFallback{background:linear-gradient(#fff9d6,#ffe67b)}
-.card.marioodyssey{background:linear-gradient(145deg,#fff,#dff0ff);border-color:#e53935!important;box-shadow:0 5px 12px #0002,inset 0 0 0 2px #7e57c233}
-.card.marioodyssey img,.card.marioodyssey .picFallback{background:linear-gradient(135deg,#fff,#eee3f8)}
-.gameBadge{display:inline-block;margin:4px auto 0;padding:3px 8px;border-radius:999px;font-size:10px;font-weight:900}
-.minecraft .gameBadge{background:#4f772d;color:#fff}.wobblylife .gameBadge{background:#f0a500;color:#342500}.marioodyssey .gameBadge{background:#e53935;color:#fff}
-.name{font-size:17px;font-weight:900;text-align:center;margin-top:5px}.type{text-align:center;font-size:12px;opacity:.75}
-.stats{display:flex;justify-content:space-around;font-size:12px;font-weight:800;margin-top:7px}
-.lock{position:absolute;inset:0;display:grid;place-items:center;font-size:34px;background:#1233}
-.reward{position:fixed;inset:0;background:#001b;display:none;place-items:center;z-index:10;padding:20px}.reward.show{display:grid}
-.reward .box{background:#fff;border-radius:24px;padding:20px;max-width:330px;width:100%;text-align:center}.reward .card{max-width:220px;margin:auto}
-.small{font-size:12px;opacity:.72;text-align:center}h2{text-align:center}.hidden{display:none}
-.sourceNote{margin-top:10px;padding:10px 12px;border-radius:12px;background:#eef6ff;font-size:12px;text-align:center}
-@media(max-width:500px){.question{font-size:34px}.grid{grid-template-columns:repeat(2,1fr)}}
-</style></head><body><header class="top"><h1>🎮 Game-Mathe-Sammler</h1><div>Rechnen · Karten gewinnen · Album füllen</div></header><main class="wrap">
-<section class="panel" id="setup"><h2>Rechentraining</h2><div class="row" id="ops"></div><h3 style="text-align:center">Dauer</h3><div class="row" id="times"></div><div class="row" style="margin-top:15px"><button class="btn primary" id="start">▶ Start</button></div></section>
-<section class="panel hidden" id="quiz"><div class="status"><span id="clock">05:00</span> · Richtig: <span id="correct">0</span> · Karte bei <span id="goal">10</span></div><div class="question" id="q">3 × 4</div><input class="answer" id="ans" inputmode="numeric" autocomplete="off"><div class="row" style="margin-top:12px"><button class="btn primary" id="ok">Prüfen</button><button class="btn" id="stop">Abbrechen</button></div><div class="status" id="msg"></div></section>
-<section class="panel"><h2>🏆 Sammelalbum</h2><div class="album-tabs" id="tabs"></div><p class="small" id="count"></p><div class="grid" id="grid"></div><div class="sourceNote">Minecraft-Bilder: Minecraft Wiki. Mario-Odyssey-Bilder werden direkt über verifizierte Dateien des Super Mario Wiki geladen. Für Wobbly Life bleibt bei nicht zuverlässig verlinkbaren Figuren automatisch das Emoji als Platzhalter.</div></section></main>
-<div class="reward" id="reward"><div class="box"><h2>🎉 Neue Karte!</h2><div id="rewardCard"></div><button class="btn primary" onclick="closeReward()">Weiter</button></div></div>
+html{-webkit-text-size-adjust:100%}
+body{
+  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  margin:0;
+  color:var(--text);
+  min-height:100vh;
+  background:#352044;
+  padding-left:max(12px,env(safe-area-inset-left));
+  padding-right:max(12px,env(safe-area-inset-right));
+  padding-bottom:max(12px,env(safe-area-inset-bottom));
+  position:relative;
+}
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:url("bg.jpg") center/cover no-repeat;
+  opacity:.32;
+  z-index:-2;
+}
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:rgba(10,48,92,.20);
+  z-index:-1;
+  pointer-events:none;
+}
+@media (display-mode:standalone){
+  body{padding-top:max(10px,env(safe-area-inset-top))}
+}
+header{
+  background:rgba(13,71,161,.92);
+  color:#fff;
+  padding:18px;
+  text-align:center;
+  border-radius:0 0 20px 20px;
+  backdrop-filter:blur(6px);
+}
+header h1{margin:.15rem 0 .4rem}
+header p{margin:0}
+main{max-width:1050px;margin:auto;padding:18px 6px}
+.box{
+  background:var(--paper);
+  border-radius:18px;
+  padding:18px;
+  margin-bottom:18px;
+  box-shadow:0 10px 30px #0002;
+  backdrop-filter:blur(6px);
+}
+.row{display:flex;gap:10px;justify-content:center;align-items:center;flex-wrap:wrap}
+button,input{font:inherit;font-size:16px}
+button{
+  background:var(--green);
+  color:#fff;
+  border:0;
+  border-radius:12px;
+  padding:12px 16px;
+  font-weight:800;
+  cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+  touch-action:manipulation;
+}
+button:disabled{opacity:.45}
+button.active{background:var(--green-deep);box-shadow:0 0 0 3px #fff8 inset}
+.tabs{display:flex;gap:8px;justify-content:center;margin-bottom:18px}
+.hidden{display:none!important}
+
+.control-title{text-align:center;font-weight:900;margin:8px 0}
+.choice-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:14px}
+.choice-btn{min-width:110px;background:#7650a2}
+.duration-btn{min-width:105px;background:#6d5a7f}
+.choice-btn.active,.duration-btn.active{background:#311b69}
+
+/* Punkt vor Strich und Mix zusätzlich golden hervorheben */
+.choice-btn[data-op="punkt"],
+.choice-btn[data-op="mix"]{
+  border:3px solid #d4af37;
+  box-shadow:0 0 0 1px rgba(255,235,150,.45),0 3px 10px rgba(120,85,0,.22);
+}
+
+.choice-btn[data-op="punkt"].active,
+.choice-btn[data-op="mix"].active{
+  border-color:#ffd966;
+  box-shadow:0 0 0 2px rgba(255,217,102,.38),0 0 12px rgba(212,175,55,.45);
+}
+
+.status-row{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:10px;
+  margin-top:12px;
+}
+.status-card{
+  background:#faf7fd;
+  border:1px solid #dfd0ef;
+  border-radius:12px;
+  padding:10px;
+  text-align:center;
+}
+.status-card b{display:block;font-size:1.15rem}
+
+.progress{height:12px;background:#eadff3;border-radius:20px;overflow:hidden;margin-top:10px}
+.progress div{height:100%;background:#8e63ce;width:0;transition:width .25s}
+.task{text-align:center;font-size:clamp(42px,8vw,64px);font-weight:900;margin:25px}
+#answer{
+  width:160px;
+  text-align:center;
+  padding:14px;
+  border-radius:12px;
+  border:2px solid #a9bdcf;
+  background:#fff;
+}
+.msg{text-align:center;font-weight:800;min-height:26px}
+.ipad-tip{
+  max-width:1050px;
+  margin:14px auto 0;
+  padding:12px 14px;
+  border-radius:14px;
+  background:#ffffffdd;
+  border:1px solid #dfd0ef;
+  color:#3e5368;
+  line-height:1.45;
+  font-size:.92rem;
+}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
+.album-category{
+  margin:0 0 20px;
+  border-radius:18px;
+  background:rgba(255,255,255,.10);
+  overflow:hidden;
+  box-shadow:0 8px 20px #0002;
+}
+.album-category-title{
+  color:white;
+  background:linear-gradient(135deg,rgba(8,47,107,.98),rgba(30,105,170,.95));
+  padding:16px 18px;
+  cursor:pointer;
+  list-style:none;
+  font-weight:900;
+  font-size:1.18rem;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  -webkit-tap-highlight-color:transparent;
+}
+.album-category-title::-webkit-details-marker{display:none}
+.album-category-title::after{
+  content:"▸";
+  transition:transform .2s ease;
+}
+.album-category[open]>.album-category-title::after{transform:rotate(90deg)}
+.album-category-body{padding:14px}
+.album-category-count{font-size:.86rem;opacity:.9;margin-left:auto}
+.club-section{
+  margin-bottom:18px;
+  background:rgba(255,255,255,.08);
+  border-radius:14px;
+}
+.club-title{
+  color:white;
+  background:rgba(8,47,107,.90);
+  border-radius:14px;
+  padding:12px 14px;
+  margin:0;
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  align-items:center;
+  cursor:pointer;
+  list-style:none;
+  font-weight:900;
+  -webkit-tap-highlight-color:transparent;
+}
+.club-title::-webkit-details-marker{display:none}
+.club-title::after{
+  content:"▸";
+  font-size:1.15rem;
+  transition:transform .2s ease;
+}
+.club-section[open]>.club-title::after{transform:rotate(90deg)}
+.club-title-main{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  width:100%;
+}
+.club-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+  gap:16px;
+  padding:14px 0 6px;
+}
+.club-empty-note{
+  color:#eef7f0;
+  text-align:center;
+  padding:14px;
+  font-weight:800;
+}
+
+.card{
+  border-radius:22px;
+  padding:14px;
+  background:linear-gradient(145deg,#dfb73b,#f7e8a0,#caa42f);
+  box-shadow:0 12px 26px #0003;
+  min-height:420px;
+}
+.card.Legende{
+  color:white;
+  border:1px solid rgba(224,196,255,.62);
+  background:linear-gradient(135deg,#160d35 0%,#48216d 30%,#8652a8 56%,#35205f 78%,#160d35 100%);
+  box-shadow:0 12px 30px rgba(0,0,0,.42),0 0 18px rgba(232,200,88,.20),inset 0 0 24px rgba(255,255,255,.10);
+}
+
+/* Legenden: Hologramm + dezenter Glitzereffekt */
+.card.Legende::before{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  inset:-45%;
+  width:auto;
+  left:-45%;
+  pointer-events:none;
+  background:linear-gradient(112deg,
+    transparent 31%,
+    rgba(113,220,255,.10) 39%,
+    rgba(255,255,255,.46) 46%,
+    rgba(255,190,246,.24) 51%,
+    rgba(255,220,126,.15) 56%,
+    transparent 66%);
+  opacity:.86;
+  animation:legendeHolo 4.8s ease-in-out infinite;
+}
+
+.card.Legende::after{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  inset:0;
+  pointer-events:none;
+  background-image:
+    radial-gradient(circle at 14% 18%,rgba(255,255,255,.95) 0 1px,transparent 2px),
+    radial-gradient(circle at 72% 13%,rgba(255,225,151,.95) 0 1.2px,transparent 2.4px),
+    radial-gradient(circle at 88% 47%,rgba(235,207,255,.95) 0 1px,transparent 2.2px),
+    radial-gradient(circle at 27% 62%,rgba(255,255,255,.90) 0 1.1px,transparent 2.3px),
+    radial-gradient(circle at 61% 79%,rgba(255,231,167,.95) 0 1px,transparent 2.2px),
+    radial-gradient(circle at 39% 35%,rgba(222,190,255,.90) 0 .8px,transparent 2px);
+  animation:legendeComboSparkle 2.6s ease-in-out infinite alternate;
+}
+
+@keyframes legendeHolo{
+  0%,20%{transform:translateX(-28%)}
+  70%,100%{transform:translateX(34%)}
+}
+@keyframes legendeComboSparkle{
+  0%{opacity:.12;filter:brightness(.85)}
+  30%{opacity:.72;filter:brightness(1.25)}
+  58%{opacity:.25;filter:brightness(.95)}
+  82%{opacity:.88;filter:brightness(1.4)}
+  100%{opacity:.42;filter:brightness(1.05)}
+}
+.card.Silber{background:linear-gradient(145deg,#b9c3c9,#f5f5f5,#9aa5ab)}
+.card.Bronze{background:linear-gradient(145deg,#a96536,#d6a16e,#8e512e);color:#fff}
+.top{display:flex;justify-content:space-between;align-items:flex-start;font-weight:900;font-size:28px}
+.rating-block{line-height:1}
+.card .top-right{display:flex;align-items:center;gap:7px}
+.card .club-badge{width:38px;height:38px;object-fit:contain;filter:drop-shadow(0 2px 3px rgba(0,0,0,.35))}
+.card .club-badge[hidden]{display:none}
+.pos{font-size:20px;padding-top:3px}
+.photo{
+  height:210px;
+  border-radius:16px;
+  background:#ffffff44;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  margin:8px 0;
+  font-size:38px;
+  font-weight:900;
+}
+.photo img{width:100%;height:100%;object-fit:contain;object-position:center bottom}
+.name{text-align:center;font-weight:900;font-size:19px}
+.team{text-align:center;font-size:14px;min-height:20px;margin-top:3px}
+.rarity{text-align:center;font-weight:800;margin:6px 0 8px}
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:5px 8px;
+  border-top:1px solid #0002;
+  padding-top:8px;
+  font-size:12px;
+  font-weight:800;
+}
+.stat{display:flex;justify-content:space-between;gap:5px}
+.locked{
+  height:420px;
+  border:2px dashed #d9e0da;
+  border-radius:22px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  color:#d9e0da;
+  background:rgba(8,47,107,.68);
+  padding:14px;
+}
+
+/* Noch nicht gesammelte Karten: echte Karte ausgegraut anzeigen */
+.locked-card-wrap{
+  position:relative;
+  border-radius:22px;
+  overflow:hidden;
+}
+
+.locked-card-wrap .card{
+  filter:grayscale(1);
+  opacity:.42;
+}
+
+.locked-card-wrap::after{
+  content:"🔒 Noch nicht gesammelt";
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:18px;
+  text-align:center;
+  font-weight:900;
+  font-size:1.05rem;
+  color:#fff;
+  background:rgba(8,47,107,.42);
+  text-shadow:0 2px 5px #0008;
+  pointer-events:none;
+}
+
+.reward-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(3,15,10,.94);
+  z-index:999;
+  display:grid;
+  place-items:center;
+  padding:20px;
+}
+.reward-overlay[hidden]{display:none}
+.reward-wrap{text-align:center;max-width:360px;width:100%}
+.reward-title{color:white;font-size:1.55rem;font-weight:900;margin-bottom:14px}
+#rewardCard .card{animation:cardin .8s cubic-bezier(.2,.8,.2,1) both}
+.close-reveal{margin-top:16px;font-size:1.05rem;padding:14px 20px}
+@keyframes cardin{
+  from{transform:rotateY(100deg) scale(.5);opacity:0}
+  to{transform:none;opacity:1}
+}
+.session-end{text-align:center}
+.session-end h2{font-size:2rem;margin-bottom:8px}
+
+.rest-inputs{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.rest-inputs input{
+  width:110px;
+  text-align:center;
+  padding:14px;
+  border-radius:12px;
+  border:2px solid #a9bdcf;
+  background:#fff;
+}
+.rest-label{
+  font-weight:900;
+  font-size:1.15rem;
+}
+.end-praise{
+  font-size:1.4rem;
+  font-weight:900;
+}
+.reward-text{
+  text-align:center;
+  font-size:1.2rem;
+  font-weight:900;
+  min-height:30px;
+  margin-top:8px;
+}
+
+.meme67-overlay{
+  position:fixed;
+  inset:0;
+  z-index:1200;
+  display:grid;
+  place-items:center;
+  padding:20px;
+  background:rgba(0,0,0,.55);
+  backdrop-filter:blur(4px);
+}
+.meme67-overlay[hidden]{display:none}
+.meme67-card{
+  width:min(360px,92vw);
+  border-radius:28px;
+  background:linear-gradient(145deg,#fff,#f5eefb);
+  border:5px solid #512da8;
+  box-shadow:0 20px 70px #0008;
+  text-align:center;
+  padding:22px 18px 18px;
+  animation:meme67pop .48s cubic-bezier(.2,.9,.25,1.2) both;
+}
+.meme67-number{
+  font-size:clamp(88px,28vw,150px);
+  line-height:.9;
+  font-weight:1000;
+  letter-spacing:-8px;
+  color:#512da8;
+  text-shadow:4px 4px 0 #f2cf45;
+}
+.meme67-text{
+  margin-top:10px;
+  font-size:1.45rem;
+  font-weight:1000;
+}
+.meme67-sub{
+  margin-top:5px;
+  font-size:.95rem;
+  font-weight:800;
+  opacity:.78;
+}
+@keyframes meme67pop{
+  from{transform:scale(.35) rotate(-8deg);opacity:0}
+  65%{transform:scale(1.08) rotate(3deg);opacity:1}
+  to{transform:scale(1) rotate(0)}
+}
+
+body.meme67-shake{
+  overflow-x:hidden;
+}
+body.meme67-shake > *:not(.meme67-overlay){
+  animation:meme67screenShake .12s infinite alternate ease-in-out;
+  transform-origin:center center;
+}
+body.meme67-shake::after{
+  animation:meme67flash .16s infinite alternate;
+}
+body.meme67-shake header,
+body.meme67-shake main,
+body.meme67-shake .ipad-tip{
+  filter:saturate(1.8) contrast(1.15);
+}
+
+@keyframes meme67screenShake{
+  0%   {transform:translate(-5px,3px) rotate(-.7deg) scale(1.004)}
+  20%  {transform:translate(6px,-2px) rotate(.8deg) scale(1.006)}
+  40%  {transform:translate(-3px,-5px) rotate(-.4deg) scale(1.003)}
+  60%  {transform:translate(5px,4px) rotate(.6deg) scale(1.007)}
+  80%  {transform:translate(-6px,1px) rotate(-.8deg) scale(1.004)}
+  100% {transform:translate(4px,-4px) rotate(.5deg) scale(1.006)}
+}
+
+@keyframes meme67flash{
+  0%{background:rgba(255,255,255,.02)}
+  50%{background:rgba(242,207,69,.18)}
+  100%{background:rgba(13,71,161,.16)}
+}
+
+@media (prefers-reduced-motion:reduce){
+  body.meme67-shake > *:not(.meme67-overlay){
+    animation:none;
+  }
+  body.meme67-shake::after{
+    animation:none;
+  }
+}
+
+.cancel-training{
+  position:fixed;
+  top:max(14px,env(safe-area-inset-top));
+  right:max(14px,env(safe-area-inset-right));
+  z-index:1400;
+  width:54px;
+  height:54px;
+  padding:0;
+  border-radius:50%;
+  background:#b42318;
+  color:#fff;
+  font-size:30px;
+  line-height:1;
+  box-shadow:0 8px 24px #0005;
+}
+.cancel-training:hover{background:#8f1c13}
+.end-actions{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:14px;
+}
+
+
+.source-note{
+  max-width:1050px;
+  margin:4px auto 18px;
+  padding:10px 14px;
+  text-align:center;
+  font-size:12px;
+  line-height:1.55;
+  color:rgba(255,255,255,.78);
+}
+.source-note a{
+  color:inherit;
+  text-decoration:underline;
+}
+
+
+.game-card .photo img{width:100%;height:100%;object-fit:contain}
+.game-card .stats{grid-template-columns:repeat(3,1fr)}
+.game-card .pos{max-width:105px;text-align:right}
+</style>
+</head>
+
+
+<header>
+  <h1>🎮 Gamer-Mathe-Trainer</h1>
+  <p>Aufgaben lösen → Karten sammeln → Album füllen</p>
+</header>
+
+<button type="button" id="cancelTraining" class="cancel-training hidden" aria-label="Übung abbrechen" title="Übung abbrechen">✕</button>
+
+<main>
+  <div class="tabs">
+    <button id="trainerTab" class="active">Trainer</button>
+    <button id="albumTab">Sammelalbum</button>
+  </div>
+
+  <section id="trainer">
+    <div class="box" id="trainerBox">
+      <div class="control-title">Rechenart auswählen</div>
+      <div class="choice-row" id="opButtons">
+        <button type="button" class="choice-btn active" data-op="mul">Mal</button>
+        <button type="button" class="choice-btn" data-op="add">Plus</button>
+        <button type="button" class="choice-btn" data-op="sub">Minus</button>
+        <button type="button" class="choice-btn" data-op="div">Geteilt</button>
+        <button type="button" class="choice-btn" data-op="rest">Rest</button>
+		<button type="button" class="choice-btn" data-op="punkt">Punkt vor Strich</button>
+        <button type="button" class="choice-btn" data-op="mix">Mix</button>
+      </div>
+
+      <div class="control-title">Übungsdauer auswählen</div>
+      <div class="choice-row" id="durationButtons">
+        <button type="button" class="duration-btn active" data-minutes="5">5 Minuten</button>
+        <button type="button" class="duration-btn" data-minutes="7">7 Minuten</button>
+        <button type="button" class="duration-btn" data-minutes="10">10 Minuten</button>
+        <button type="button" class="duration-btn" data-minutes="15">15 Minuten</button>
+      </div>
+
+      <div class="row">
+        <button type="button" id="startSession">▶ Training starten</button>
+      </div>
+
+      <div id="activeTraining" class="hidden">
+        <div class="status-row">
+          <div class="status-card">Zeit<b id="timeLeft">05:00</b></div>
+          <div class="status-card">Richtig<b id="totalCorrect">0</b></div>
+          <div class="status-card">Karten<b id="cardsEarned">0</b></div>
+        </div>
+        <div class="status-card" style="margin-top:10px">Bis zur nächsten Karte<b><span id="rewardProgress">0</span>/<span id="rewardGoal">10</span></b></div>
+        <div class="progress"><div id="bar"></div></div>
+
+        <div class="task" id="task"></div>
+        <form class="row" id="form">
+          <div id="normalAnswerWrap">
+            <input id="answer" type="number" inputmode="numeric" autocomplete="off">
+          </div>
+          <div id="restAnswerWrap" class="hidden rest-inputs">
+            <input id="restQuotient" type="number" inputmode="numeric" autocomplete="off" aria-label="Ergebnis">
+            <span class="rest-label">Rest</span>
+            <input id="restRemainder" type="number" inputmode="numeric" autocomplete="off" aria-label="Rest">
+          </div>
+          <button type="submit">Prüfen</button>
+        </form>
+        <p class="msg" id="msg"></p>
+        <div class="reward-text" id="rewardText"></div>
+      </div>
+
+      <div id="sessionEnd" class="session-end hidden">
+        <h2 id="sessionEndTitle">⏱️ Übungszeit beendet</h2>
+        <p>Du hast <strong id="endCorrect">0</strong> Aufgaben richtig gelöst.</p>
+        <p>Du hast <strong id="endCards">0</strong> Karten verdient.</p>
+        <p>Trainiert: <strong id="endTime">00:00</strong></p>
+        <p class="end-praise">🌟 Super gemacht!</p>
+        <div class="end-actions">
+          <button type="button" id="restartSession">🔁 Neu starten</button>
+          <button type="button" id="backHome">🏠 Zum Startbildschirm</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="album" class="hidden">
+    <div class="box">
+      <h2>Dein Sammelalbum</h2>
+      <p><b id="ownedCount">0</b> von <b id="allCount">0</b> Karten gesammelt.</p>
+    </div>
+    <div id="albumClubs"></div>
+  </section>
+</main>
+
+<footer class="source-note">
+  Karten und Bildangaben werden aus <b>cards.json</b> geladen.<br>
+  © Bildrechte bei den jeweiligen Rechteinhabern.
+</footer>
+
+
+<div id="rewardOverlay" class="reward-overlay" hidden>
+  <div class="reward-wrap">
+    <div class="reward-title" id="rewardTitle">✨ Neue Karte! ✨</div>
+    <div id="rewardCard"></div>
+    <button id="closeReward" class="close-reveal">📖 Ins Sammelalbum</button>
+  </div>
+</div>
+
 <script>
-let cards=[],game='minecraft',owned=new Set(JSON.parse(localStorage.getItem('gameMathOwned')||'[]'));let op='mul',mins=5,seconds=0,timer=null,current=null,tries=0,correct=0,nextReward=10;
-const games={minecraft:'⛏️ Minecraft',wobblylife:'🟡 Wobbly Life',marioodyssey:'🍄 Mario Odyssey'};
-const ops=[['mul','Mal'],['add','Plus'],['sub','Minus'],['div','Geteilt'],['rest','Rest'],['point','Punkt vor Strich'],['mix','Mix']];
-function imageUrl(c){if(c.imgUrl)return c.imgUrl;if(c.game==='minecraft')return `https://minecraft.wiki/w/Special:FilePath/${encodeURIComponent(c.img)}.png`;return ''}
-function stats(c){if(c.game==='minecraft')return `❤️ ${c.hp??'-'}　⚔️ ${c.atk??'-'}`;return `💪 ${c.power??'-'}　⚡ ${c.speed??'-'}　🎯 ${c.skill??'-'}`}
-function cardHTML(c,locked=false){let u=imageUrl(c),label=games[c.game]||'🎮 Spiel';return `<div class="card ${c.game||''} ${locked?'locked':''}">${u?`<img src="${u}" alt="${c.name}" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><div class="picFallback" style="display:none">${c.emoji||'🎮'}</div>`:`<div class="picFallback">${c.emoji||'🎮'}</div>`}<div class="name">${c.name}</div><div class="type">${c.type||c.mob||'Figur'}</div><div style="text-align:center"><span class="gameBadge">${label}</span></div><div class="stats">${stats(c)}</div>${locked?'<div class="lock">🔒</div>':''}</div>`}
-function renderAlbum(){document.getElementById('tabs').innerHTML=Object.entries(games).map(([k,v])=>`<button class="btn ${game===k?'on':''}" onclick="game='${k}';renderAlbum()">${v}</button>`).join('');let a=cards.filter(c=>c.game===game);document.getElementById('count').textContent=`${a.filter(c=>owned.has(c.id)).length} von ${a.length} Karten gesammelt`;document.getElementById('grid').innerHTML=a.map(c=>cardHTML(c,!owned.has(c.id))).join('')}
-function buildControls(){document.getElementById('ops').innerHTML=ops.map(([k,n])=>`<button class="btn ${op===k?'on':''} ${['point','mix'].includes(k)?'gold':''}" onclick="op='${k}';buildControls()">${n}</button>`).join('');document.getElementById('times').innerHTML=[5,7,10,15].map(n=>`<button class="btn ${mins===n?'on':''}" onclick="mins=${n};buildControls()">${n} Min</button>`).join('')}
-const ri=(a,b)=>Math.floor(Math.random()*(b-a+1))+a;
-function make(kind){if(kind==='mix')kind=['mul','add','sub','div','rest','point'][ri(0,5)];let a,b,c,txt,val;if(kind==='mul'){a=ri(2,12);b=ri(2,12);txt=`${a} × ${b}`;val=a*b}else if(kind==='add'){a=ri(5,80);b=ri(2,100-a);txt=`${a} + ${b}`;val=a+b}else if(kind==='sub'){a=ri(10,100);b=ri(1,a);txt=`${a} − ${b}`;val=a-b}else if(kind==='div'){b=ri(2,12);val=ri(2,12);a=b*val;txt=`${a} ÷ ${b}`}else if(kind==='rest'){b=ri(2,12);val=ri(0,b-1);a=b*ri(2,9)+val;txt=`${a} : ${b} → Rest ?`}else{a=ri(1,20);b=ri(2,9);c=ri(2,9);if(Math.random()<.5){txt=`${a} + ${b} × ${c}`;val=a+b*c}else{let prod=b*c;if(prod>a){a=ri(prod,100)}txt=`${a} − ${b} × ${c}`;val=a-prod}}return{txt,val}}
-function newQ(){current=make(op);tries=0;document.getElementById('q').textContent=current.txt;document.getElementById('ans').value='';document.getElementById('msg').textContent='';document.getElementById('ans').focus()}
-function rewardGoal(){return ['point','mix'].includes(op)?5:10}
-function start(){correct=0;nextReward=rewardGoal();seconds=mins*60;document.getElementById('goal').textContent=nextReward;document.getElementById('correct').textContent=0;document.getElementById('setup').classList.add('hidden');document.getElementById('quiz').classList.remove('hidden');tick();timer=setInterval(()=>{seconds--;tick();if(seconds<=0)finish()},1000);newQ()}
-function tick(){let m=Math.floor(seconds/60),s=seconds%60;document.getElementById('clock').textContent=`${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`}
-function check(){let v=Number(document.getElementById('ans').value);if(document.getElementById('ans').value.trim()==='')return;if(v===current.val){correct++;document.getElementById('correct').textContent=correct;document.getElementById('msg').textContent='✅ Richtig!';if(correct>=nextReward){giveCard();nextReward+=rewardGoal();document.getElementById('goal').textContent=nextReward}setTimeout(newQ,350)}else{tries++;if(tries>=2){document.getElementById('msg').textContent=`❌ Lösung: ${current.val}`;setTimeout(newQ,900)}else{document.getElementById('msg').textContent='Noch einmal versuchen!';document.getElementById('ans').select()}}}
-function giveCard(){let pool=cards.filter(c=>!owned.has(c.id));if(!pool.length)return;let c=pool[ri(0,pool.length-1)];owned.add(c.id);localStorage.setItem('gameMathOwned',JSON.stringify([...owned]));document.getElementById('rewardCard').innerHTML=cardHTML(c,false);document.getElementById('reward').classList.add('show');renderAlbum()}
-function closeReward(){document.getElementById('reward').classList.remove('show');document.getElementById('ans').focus()}
-function finish(){clearInterval(timer);timer=null;document.getElementById('quiz').classList.add('hidden');document.getElementById('setup').classList.remove('hidden')}
-document.getElementById('start').onclick=start;document.getElementById('ok').onclick=check;document.getElementById('stop').onclick=finish;document.getElementById('ans').addEventListener('keydown',e=>{if(e.key==='Enter')check()});
-fetch('cards.json',{cache:'no-store'}).then(r=>r.json()).then(x=>{cards=x;renderAlbum()}).catch(e=>{document.getElementById('count').textContent='cards.json konnte nicht geladen werden.'});buildControls();
-</script></body></html>
+let players=[];
+let currentAnswer=0;
+let currentRemainder=0;
+let currentTaskType='mul';
+let attemptsForTask=0;
+let currentOp=localStorage.getItem('gm_op')||'mul';
+let selectedMinutes=Number(localStorage.getItem('gm_minutes')||5);
+let totalCorrect=0;
+let rewardCounter=0;
+let cardsEarned=0;
+let owned=JSON.parse(localStorage.getItem('gm_owned')||'[]');
+let timerId=null;
+let secondsLeft=0;
+let trainingActive=false;
+let rewardOpen=false;
+let lastTaskKey='';
+
+const $=id=>document.getElementById(id);
+const API='https://www.thesportsdb.com/api/v1/json/123/searchplayers.php?p=';
+
+function r(a,b){return Math.floor(Math.random()*(b-a+1))+a}
+function initials(name){return name.split(/\s+/).map(x=>x[0]).join('').slice(0,2).toUpperCase()}
+
+async function start(){
+  players=await (await fetch('cards.json')).json();
+  $('allCount').textContent=players.length;
+  syncSelectionButtons();
+  renderAlbum();
+  updateUi();
+}
+
+function syncSelectionButtons(){
+  document.querySelectorAll('.choice-btn').forEach(b=>b.classList.toggle('active',b.dataset.op===currentOp));
+  document.querySelectorAll('.duration-btn').forEach(b=>b.classList.toggle('active',Number(b.dataset.minutes)===selectedMinutes));
+}
+
+document.querySelectorAll('.choice-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    if(trainingActive)return;
+    currentOp=btn.dataset.op;
+    localStorage.setItem('gm_op',currentOp);
+    syncSelectionButtons();
+  });
+});
+
+document.querySelectorAll('.duration-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    if(trainingActive)return;
+    selectedMinutes=Number(btn.dataset.minutes);
+    localStorage.setItem('gm_minutes',selectedMinutes);
+    syncSelectionButtons();
+  });
+});
+
+function pickTaskType(){
+  if(currentOp!=='mix') return currentOp;
+  const types=['mul','add','sub','div','rest','punkt'];
+  return types[r(0,types.length-1)];
+}
+
+function setAnswerMode(type){
+  const isRest=type==='rest';
+  $('normalAnswerWrap').classList.toggle('hidden',isRest);
+  $('restAnswerWrap').classList.toggle('hidden',!isRest);
+}
+
+function focusAnswerField(){
+  if(!trainingActive || rewardOpen)return;
+  const el=currentTaskType==='rest' ? $('restQuotient') : $('answer');
+  setTimeout(()=>{
+    try{el.focus({preventScroll:true})}catch(e){el.focus()}
+  },50);
+}
+
+function newTask(){
+  if(!trainingActive || rewardOpen)return;
+
+  attemptsForTask=0;
+  $('rewardText').textContent='';
+
+  let a,b,c,symbol='',taskKey='',taskText='',tries=0;
+
+    do{
+    currentTaskType=pickTaskType();
+    setAnswerMode(currentTaskType);
+
+    if(currentTaskType==='mul'){
+      a=r(1,10); b=r(1,10);
+      currentAnswer=a*b; currentRemainder=0; symbol='×';
+      taskText=`${a} ${symbol} ${b} = ?`;
+      taskKey=`${currentTaskType}|${a}|${b}`;
+    }
+
+    if(currentTaskType==='add'){
+      a=r(0,100); b=r(0,100-a);
+      currentAnswer=a+b; currentRemainder=0; symbol='+';
+      taskText=`${a} ${symbol} ${b} = ?`;
+      taskKey=`${currentTaskType}|${a}|${b}`;
+    }
+
+    if(currentTaskType==='sub'){
+      a=r(0,100); b=r(0,a);
+      currentAnswer=a-b; currentRemainder=0; symbol='−';
+      taskText=`${a} ${symbol} ${b} = ?`;
+      taskKey=`${currentTaskType}|${a}|${b}`;
+    }
+
+    if(currentTaskType==='div'){
+      currentAnswer=r(1,10);
+      b=r(1,10);
+      a=currentAnswer*b;
+      currentRemainder=0;
+      symbol='÷';
+      taskText=`${a} ${symbol} ${b} = ?`;
+      taskKey=`${currentTaskType}|${a}|${b}`;
+    }
+
+    if(currentTaskType==='rest'){
+      b=r(2,10);
+      currentAnswer=r(1,10);
+      currentRemainder=r(1,b-1);
+      a=currentAnswer*b+currentRemainder;
+      symbol='÷';
+      taskText=`${a} ${symbol} ${b} = ?`;
+      taskKey=`${currentTaskType}|${a}|${b}`;
+    }
+
+    if(currentTaskType==='punkt'){
+      // Punkt vor Strich: Multiplikation ODER exakte Division aus dem kleinen 1x1.
+      // Das Endergebnis bleibt immer im Zahlenraum von 0 bis 100.
+      let valid=false;
+      while(!valid){
+        a=r(0,100);
+        const useDivision=Math.random()<0.5;
+        const plus=Math.random()<0.5;
+        const pointFirst=Math.random()<0.5;
+        let pointValue=0;
+        let pointText='';
+
+        if(useDivision){
+          // Beispiel: 48 ÷ 6 = 8. Dividend und Divisor stammen aus dem kleinen 1x1.
+          const quotient=r(1,10);
+          const divisor=r(1,10);
+          const dividend=quotient*divisor;
+          pointValue=quotient;
+          pointText=`${dividend} ÷ ${divisor}`;
+        }else{
+          b=r(1,10);
+          c=r(1,10);
+          pointValue=b*c;
+          pointText=`${b} × ${c}`;
+        }
+
+        if(plus){
+          currentAnswer=a+pointValue;
+          if(currentAnswer<=100){
+            taskText=pointFirst
+              ? `${pointText} + ${a} = ?`
+              : `${a} + ${pointText} = ?`;
+            valid=true;
+          }
+        }else if(pointFirst){
+          currentAnswer=pointValue-a;
+          if(currentAnswer>=0 && currentAnswer<=100){
+            taskText=`${pointText} − ${a} = ?`;
+            valid=true;
+          }
+        }else{
+          currentAnswer=a-pointValue;
+          if(currentAnswer>=0 && currentAnswer<=100){
+            taskText=`${a} − ${pointText} = ?`;
+            valid=true;
+          }
+        }
+      }
+      currentRemainder=0;
+      taskKey=`${currentTaskType}|${taskText}`;
+    }
+
+    tries++;
+  }while(taskKey===lastTaskKey && tries<50);
+
+  lastTaskKey=taskKey;
+  $('task').textContent=taskText;
+
+  $('answer').value='';
+  $('restQuotient').value='';
+  $('restRemainder').value='';
+
+  focusAnswerField();
+}
+
+function formatTime(sec){
+  const m=Math.floor(sec/60);
+  const s=sec%60;
+  return `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+}
+
+function rewardTarget(){
+  return (currentOp==='mix' || currentOp==='punkt') ? 5 : 10;
+}
+
+function updateUi(){
+  $('timeLeft').textContent=formatTime(Math.max(0,secondsLeft));
+  $('totalCorrect').textContent=totalCorrect;
+  $('rewardProgress').textContent=rewardCounter;
+  if($('rewardGoal')) $('rewardGoal').textContent=rewardTarget();
+  $('cardsEarned').textContent=cardsEarned;
+  $('bar').style.width=(rewardCounter/rewardTarget()*100)+'%';
+  $('ownedCount').textContent=owned.length;
+}
+
+function startTraining(){
+  clearInterval(timerId);
+  totalCorrect=0;
+  rewardCounter=0;
+  cardsEarned=0;
+  attemptsForTask=0;
+  secondsLeft=selectedMinutes*60;
+  trainingActive=true;
+  rewardOpen=false;
+  $('sessionEnd').classList.add('hidden');
+  $('activeTraining').classList.remove('hidden');
+  $('cancelTraining').classList.remove('hidden');
+  $('sessionEndTitle').textContent='⏱️ Übungszeit beendet';
+  $('startSession').textContent='Training läuft …';
+  $('startSession').disabled=true;
+  document.querySelectorAll('.choice-btn,.duration-btn').forEach(b=>b.disabled=true);
+  $('msg').textContent='';
+  updateUi();
+  newTask();
+  timerId=setInterval(()=>{
+    if(!rewardOpen){
+      secondsLeft--;
+      updateUi();
+      if(secondsLeft<=0)finishTraining();
+    }
+  },1000);
+}
+
+function finishTraining(reason='time'){
+  if(!trainingActive && reason!=='cancel')return;
+
+  trainingActive=false;
+  clearInterval(timerId);
+  timerId=null;
+
+  $('rewardOverlay').hidden=true;
+  rewardOpen=false;
+
+  $('cancelTraining').classList.add('hidden');
+  $('activeTraining').classList.add('hidden');
+  $('sessionEnd').classList.remove('hidden');
+
+  $('sessionEndTitle').textContent=
+    reason==='cancel' ? '⏹️ Übung beendet' : '⏱️ Übungszeit beendet';
+
+  $('endCorrect').textContent=totalCorrect;
+  $('endCards').textContent=cardsEarned;
+
+  const trainedSeconds=Math.max(0,selectedMinutes*60-secondsLeft);
+  $('endTime').textContent=formatTime(trainedSeconds);
+
+  $('startSession').disabled=false;
+  $('startSession').textContent='▶ Training starten';
+  document.querySelectorAll('.choice-btn,.duration-btn').forEach(b=>b.disabled=false);
+}
+
+$('startSession').addEventListener('click',startTraining);
+$('restartSession').addEventListener('click',startTraining);
+
+$('cancelTraining').addEventListener('click',()=>{
+  if(!trainingActive && !rewardOpen)return;
+  finishTraining('cancel');
+});
+
+$('backHome').addEventListener('click',()=>{
+  $('sessionEnd').classList.add('hidden');
+  $('activeTraining').classList.add('hidden');
+  $('cancelTraining').classList.add('hidden');
+
+  $('trainer').classList.remove('hidden');
+  $('album').classList.add('hidden');
+  $('trainerTab').classList.add('active');
+  $('albumTab').classList.remove('active');
+
+  $('startSession').disabled=false;
+  $('startSession').textContent='▶ Training starten';
+  document.querySelectorAll('.choice-btn,.duration-btn').forEach(b=>b.disabled=false);
+});
+
+$('form').addEventListener('submit',e=>{
+  e.preventDefault();
+  if(!trainingActive || rewardOpen)return;
+
+  let isCorrect=false;
+
+  if(currentTaskType==='rest'){
+    const q=Number($('restQuotient').value);
+    const rem=Number($('restRemainder').value);
+    isCorrect=(q===currentAnswer && rem===currentRemainder);
+  }else{
+    isCorrect=(Number($('answer').value)===currentAnswer);
+  }
+
+  if(isCorrect){
+    totalCorrect++;
+    rewardCounter++;
+    const praise=['Toll! 😊','Super! 🎉','Richtig! ⭐','Klasse! 💪','Perfekt! ✨','Mega! 🔥','Stark! 💥','Wow! 🏆','Bombe! 💣','Genial! 🧠'];
+    $('rewardText').textContent=praise[r(0,praise.length-1)];
+    $('msg').textContent='✅ Richtig!';
+    updateUi();
+
+    if(rewardCounter>=rewardTarget()){
+      rewardCounter=0;
+      cardsEarned++;
+      updateUi();
+      showAutomaticReward();
+      return;
+    }
+
+    setTimeout(newTask,1100);
+    return;
+  }
+
+  attemptsForTask++;
+
+  if(attemptsForTask<2){
+    $('msg').textContent='❌ Noch nicht richtig – du hast noch einen Versuch.';
+    focusAnswerField();
+    return;
+  }
+
+  if(currentTaskType==='rest'){
+    $('msg').textContent=`❌ Die Lösung ist ${currentAnswer} Rest ${currentRemainder}.`;
+  }else{
+    $('msg').textContent=`❌ Die Lösung ist ${currentAnswer}.`;
+  }
+
+  setTimeout(newTask,1400);
+});
+
+async function info(p){
+  // Der Updater speichert das echte TheSportsDB-Spielerbild bereits in cards.json.
+  // Reihenfolge dort: strThumb -> strCutout. Cartoons werden nicht verwendet.
+  if(typeof p.photo==='string' && p.photo.trim()){
+    return {photo:p.photo.trim(),team:p.club||''};
+  }
+
+  // Fallback für ältere cards.json oder falls beim Update noch kein photo-Feld
+  // vorhanden war: direkt über die offizielle TheSportsDB-Spielersuche nachladen.
+  const key='fm_info_realphoto_json_v1_'+p.id;
+  const cached=localStorage.getItem(key);
+  if(cached){
+    try{return JSON.parse(cached)}catch(e){}
+  }
+
+  try{
+    const d=await (await fetch(API+encodeURIComponent(p.search||p.name))).json();
+    const candidates=Array.isArray(d.player)?d.player:[];
+    const sid=String(p.sportsdbId||'');
+    const x=(sid && candidates.find(v=>String(v.idPlayer||'')===sid)) || candidates[0];
+
+    // Ausschließlich echte TheSportsDB-Bilder:
+    // strThumb zuerst, strCutout als Alternative. Kein Cartoon.
+    const v={
+      photo:x?(x.strThumb||x.strCutout||''):'',
+      team:x?(x.strTeam||p.club||''):(p.club||'')
+    };
+
+    localStorage.setItem(key,JSON.stringify(v));
+    return v;
+  }catch(e){
+    return {photo:'',team:p.club||''};
+  }
+}
+
+function gameLabel(g){
+  return g==='minecraft'?'Minecraft':g==='wobblylife'?'Wobbly Life':g==='marioodyssey'?'Mario Odyssey':(g||'Game');
+}
+function gameImage(p){
+  if(p.imgUrl)return p.imgUrl;
+  if(p.game==='minecraft'&&p.img)
+    return 'https://minecraft.wiki/w/Special:FilePath/'+encodeURIComponent(p.img)+'.png';
+  return '';
+}
+function card(p){
+  const d=document.createElement('article');
+  d.className='card game-card '+(p.game||'');
+  const label=gameLabel(p.game);
+  const stats=p.game==='minecraft'
+    ? [['HP',p.hp??'-'],['ANG',p.atk??'-'],['TYP',p.type||p.mob||'-']]
+    : [['KRF',p.power??'-'],['TEM',p.speed??'-'],['SKL',p.skill??'-']];
+  d.innerHTML=`
+    <div class="top"><div class="rating-block">${p.id??'-'}</div>
+      <div class="top-right"><div class="pos">${label}</div></div></div>
+    <div class="photo"><span>${p.emoji||'🎮'}</span></div>
+    <div class="name">${p.name}</div>
+    <div class="team">${p.type||p.mob||label}</div>
+    <div class="rarity">${label}</div>
+    <div class="stats">${stats.map(([k,v])=>`<div class="stat"><span>${k}</span><b>${v}</b></div>`).join('')}</div>`;
+  const url=gameImage(p);
+  if(url){
+    const ph=d.querySelector('.photo'),im=new Image();
+    im.alt=p.name; im.onload=()=>{ph.innerHTML='';ph.appendChild(im)}; im.src=url;
+  }
+  return d;
+}
+
+function chooseRewardPlayer(){
+  const unowned=players.filter(p=>!owned.includes(p.id));
+  const pool=unowned.length?unowned:players;
+  return pool[r(0,pool.length-1)];
+}
+
+function showAutomaticReward(){
+  rewardOpen=true;
+  const p=chooseRewardPlayer();
+  const isNew=!owned.includes(p.id);
+
+  if(isNew){
+    owned.push(p.id);
+    localStorage.setItem('gm_owned',JSON.stringify(owned));
+  }
+
+  $('rewardTitle').textContent=isNew?'✨ Neue Karte! ✨':'🔁 Schon gesammelt';
+  $('rewardCard').innerHTML='';
+  $('rewardCard').appendChild(card(p));
+  $('rewardOverlay').hidden=false;
+  updateUi();
+  renderAlbum();
+}
+
+$('closeReward').addEventListener('click',()=>{
+  $('rewardOverlay').hidden=true;
+  rewardOpen=false;
+  if(trainingActive && secondsLeft>0){
+    $('msg').textContent='🎮 Weiter geht’s!';
+    newTask();
+  }else if(secondsLeft<=0){
+    finishTraining();
+  }
+});
+
+function appendGameSections(parent,list){
+  const groups={};
+  list.forEach(p=>{const g=p.type||p.mob||'Sonstige';(groups[g]??=[]).push(p)});
+  Object.keys(groups).sort((a,b)=>a.localeCompare(b,'de')).forEach(group=>{
+    const arr=groups[group], got=arr.filter(p=>owned.includes(p.id)).length;
+    const sec=document.createElement('details'); sec.className='club-section';
+    const sum=document.createElement('summary'); sum.className='club-title';
+    sum.innerHTML=`<span class="club-title-main"><span>🎮 ${group}</span><small>${got}/${arr.length}</small></span>`;
+    sec.appendChild(sum);
+    const grid=document.createElement('div');grid.className='club-grid';sec.appendChild(grid);
+    let done=false;
+    sec.addEventListener('toggle',()=>{
+      if(!sec.open||done)return; done=true;
+      arr.slice().sort((x,y)=>x.name.localeCompare(y.name,'de')).forEach(p=>{
+        if(owned.includes(p.id))grid.appendChild(card(p));
+        else{const w=document.createElement('div');w.className='locked-card-wrap';w.appendChild(card(p));grid.appendChild(w)}
+      });
+    });
+    parent.appendChild(sec);
+  });
+}
+function renderAlbum(){
+  const wrap=$('albumClubs');wrap.innerHTML='';
+  [
+    ['minecraft','⛏️','Minecraft'],
+    ['wobblylife','🟡','Wobbly Life'],
+    ['marioodyssey','🍄','Super Mario Odyssey']
+  ].forEach(([id,icon,title])=>{
+    const list=players.filter(p=>p.game===id);if(!list.length)return;
+    const got=list.filter(p=>owned.includes(p.id)).length;
+    const cat=document.createElement('details');cat.className='album-category';
+    const sum=document.createElement('summary');sum.className='album-category-title';
+    sum.innerHTML=`<span>${icon} ${title}</span><span class="album-category-count">${got}/${list.length}</span>`;
+    cat.appendChild(sum);
+    const body=document.createElement('div');body.className='album-category-body';
+    appendGameSections(body,list);cat.appendChild(body);wrap.appendChild(cat);
+  });
+  updateUi();
+}
+
+$('trainerTab').addEventListener('click',()=>{
+  $('trainer').classList.remove('hidden');
+  $('album').classList.add('hidden');
+  $('trainerTab').classList.add('active');
+  $('albumTab').classList.remove('active');
+});
+
+$('albumTab').addEventListener('click',()=>{
+  $('trainer').classList.add('hidden');
+  $('album').classList.remove('hidden');
+  $('albumTab').classList.add('active');
+  $('trainerTab').classList.remove('active');
+  renderAlbum();
+});
+
+
+$('restQuotient').addEventListener('keydown',e=>{
+  if(e.key==='Enter'){
+    e.preventDefault();
+    $('restRemainder').focus();
+  }
+});
+
+start();
+</script>
+
+<script>
+if('serviceWorker' in navigator){
+  window.addEventListener('load',()=>{
+    navigator.serviceWorker.register('./service-worker.js').catch(()=>{});
+  });
+}
+</script>
+</body>
+</html>
