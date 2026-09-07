@@ -1,18 +1,15 @@
-Gamer-Mathe-Trainer – lila, Aufbau wie Fußball-Version
+Gamer-Mathe-Trainer – bereinigte lila Version V3
 
-Belohnungskarten:
-Quelle: die neu bereitgestellte cards(2).json
-Gesamt: 140
+Änderungen:
+- CSS-Variablen --green* vollständig in --purple* umbenannt
+- verbliebene blaue/grüne Grundfarben auf die lila Palette vereinheitlicht
+- Gamer-Bezeichnungen statt alter Fußball-/Grün-Bezeichnungen
+- Gold/Silber/Bronze- und Kartenakzente bewusst nicht pauschal verändert
+- cards.json unverändert übernommen
+- 140 Belohnungskarten
+- neuer PWA-Cache: gamer-mathe-v3
 
-Kategorien:
-- minecraft: 90
-- wobblylife: 20
-- marioodyssey: 30
-
-Doppelte IDs: keine
-
-Für GitHub Pages:
-1. index.html
-2. cards.json
-3. service-worker.js
-in das Repository hochladen/ersetzen.
+Für GitHub Pages diese Dateien ersetzen:
+- index.html
+- cards.json
+- service-worker.js
