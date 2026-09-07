@@ -679,10 +679,10 @@
     "atk": 0,
     "emoji": "🦜",
     "color": "#e74c3c",
-    "img": "Parrot",
+    "img": "EntitySprite parrot",
     "game": "minecraft",
     "type": "Passiv",
-    "imageSource": "minecraftwiki",
+    "imageSource": "Minecraft Wiki EntitySprite",
     "imagePage": "https://minecraft.wiki/w/Special:FilePath/Parrot.png"
   },
   {
