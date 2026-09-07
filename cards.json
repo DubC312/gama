@@ -553,10 +553,10 @@
     "atk": 0,
     "emoji": "🐱",
     "color": "#f39c12",
-    "img": "Cat",
+    "img": "EntitySprite cat",
     "game": "minecraft",
     "type": "Passiv",
-    "imageSource": "minecraftwiki",
+    "imageSource": "Minecraft Wiki EntitySprite",
     "imagePage": "https://minecraft.wiki/w/Special:FilePath/Cat.png"
   },
   {
@@ -847,10 +847,10 @@
     "atk": 0,
     "emoji": "🐰",
     "color": "#d35400",
-    "img": "Rabbit",
+    "img": "EntitySprite rabbit",
     "game": "minecraft",
     "type": "Passiv",
-    "imageSource": "minecraftwiki",
+    "imageSource": "Minecraft Wiki EntitySprite",
     "imagePage": "https://minecraft.wiki/w/Special:FilePath/Rabbit.png"
   },
   {
@@ -903,10 +903,10 @@
     "atk": 0,
     "emoji": "👨‍🌾",
     "color": "#795548",
-    "img": "Villager",
+    "img": "EntitySprite villager",
     "game": "minecraft",
     "type": "Passiv",
-    "imageSource": "minecraftwiki",
+    "imageSource": "Minecraft Wiki EntitySprite",
     "imagePage": "https://minecraft.wiki/w/Special:FilePath/Villager.png"
   },
   {
@@ -1141,10 +1141,10 @@
     "atk": 1,
     "emoji": "🦙",
     "color": "#0984e3",
-    "img": "Trader_Llama",
+    "img": "EntitySprite trader-llama",
     "game": "minecraft",
     "type": "Neutral",
-    "imageSource": "minecraftwiki",
+    "imageSource": "Minecraft Wiki EntitySprite",
     "imagePage": "https://minecraft.wiki/w/Special:FilePath/Trader_Llama.png"
   },
   {
@@ -1239,10 +1239,10 @@
     "atk": 8,
     "emoji": "🐰",
     "color": "#e74c3c",
-    "img": "Rabbit",
+    "img": "EntitySprite killer-rabbit",
     "game": "minecraft",
     "type": "Feindlich",
-    "imageSource": "minecraftwiki",
+    "imageSource": "Minecraft Wiki EntitySprite",
     "imagePage": "https://minecraft.wiki/w/Special:FilePath/Rabbit.png"
   },
   {
