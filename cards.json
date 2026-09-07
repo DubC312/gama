@@ -235,7 +235,7 @@
     "game": "minecraft",
     "type": "Feindlich",
     "imageSource": "minecraftwiki",
-    "imagePage": "https://minecraft.wiki/w/Special:FilePath/Ghast.png"
+    "imagePage": "https://minecraft.wiki/w/Special:FilePath/Ghast.gif"
   },
   {
     "id": 18,
@@ -557,7 +557,7 @@
     "game": "minecraft",
     "type": "Passiv",
     "imageSource": "Minecraft Wiki EntitySprite",
-    "imagePage": "https://minecraft.wiki/w/Special:FilePath/Cat.png"
+    "imagePage": "https://minecraft.wiki/w/Special:FilePath/Jellie_Cat.png"
   },
   {
     "id": 41,
@@ -683,7 +683,7 @@
     "game": "minecraft",
     "type": "Passiv",
     "imageSource": "Minecraft Wiki EntitySprite",
-    "imagePage": "https://minecraft.wiki/w/Special:FilePath/Parrot.png"
+    "imagePage": "https://minecraft.wiki/w/Special:FilePath/Red_Parrot.png"
   },
   {
     "id": 50,
@@ -851,7 +851,7 @@
     "game": "minecraft",
     "type": "Passiv",
     "imageSource": "Minecraft Wiki EntitySprite",
-    "imagePage": "https://minecraft.wiki/w/Special:FilePath/Rabbit.png"
+    "imagePage": "https://minecraft.wiki/w/Special:FilePath/Brown_Rabbit.png"
   },
   {
     "id": 62,
@@ -907,7 +907,7 @@
     "game": "minecraft",
     "type": "Passiv",
     "imageSource": "Minecraft Wiki EntitySprite",
-    "imagePage": "https://minecraft.wiki/w/Special:FilePath/Villager.png"
+    "imagePage": "https://minecraft.wiki/images/Plains_Villager_Base_JE2.png?a2fcc"
   },
   {
     "id": 66,
@@ -1145,7 +1145,7 @@
     "game": "minecraft",
     "type": "Neutral",
     "imageSource": "Minecraft Wiki EntitySprite",
-    "imagePage": "https://minecraft.wiki/w/Special:FilePath/Trader_Llama.png"
+    "imagePage": "https://minecraft.wiki/w/Special:FilePath/White_Trader_Llama.png"
   },
   {
     "id": 83,
@@ -1218,20 +1218,6 @@
     "imagePage": "https://minecraft.wiki/w/Special:FilePath/Brown_Mooshroom.png"
   },
   {
-    "id": 88,
-    "name": "Bienen-Nest",
-    "mob": "Neutral",
-    "hp": 10,
-    "atk": 2,
-    "emoji": "🐝",
-    "color": "#f1c40f",
-    "img": "Bee",
-    "game": "minecraft",
-    "type": "Neutral",
-    "imageSource": "minecraftwiki",
-    "imagePage": "https://minecraft.wiki/w/Special:FilePath/Bee.png"
-  },
-  {
     "id": 89,
     "name": "Killer-Kaninchen",
     "mob": "Feindlich",
@@ -1239,11 +1225,11 @@
     "atk": 8,
     "emoji": "🐰",
     "color": "#e74c3c",
-    "img": "EntitySprite killer-rabbit",
+    "img": "EntitySprite killer-bunny",
     "game": "minecraft",
     "type": "Feindlich",
     "imageSource": "Minecraft Wiki EntitySprite",
-    "imagePage": "https://minecraft.wiki/w/Special:FilePath/Rabbit.png"
+    "imagePage": "https://minecraft.wiki/w/Rabbit#/media/File:The_Killer_Bunny_JE6.png/2"
   },
   {
     "id": 90,
@@ -1258,6 +1244,20 @@
     "type": "Spieler",
     "imageSource": "minecraftwiki",
     "imagePage": "https://minecraft.wiki/w/Special:FilePath/Steve.png"
+  },
+    {
+    "id": 91,
+    "name": "Alex",
+    "mob": "Spieler",
+    "hp": 20,
+    "atk": 1,
+    "emoji": "🧑",
+    "color": "#74b9ff",
+    "img": "Alex",
+    "game": "minecraft",
+    "type": "Spieler",
+    "imageSource": "minecraftwiki",
+    "imagePage": "https://minecraft.wiki/w/Special:FilePath/Alex.png"
   },
   {
     "id": 101,
