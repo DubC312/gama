@@ -1390,8 +1390,9 @@
     "emoji": "👻",
     "color": "#f2c94c",
     "img": "Ghost",
-    "imageSource": "placeholder",
-    "imagePage": "https://wobbly-life.fandom.com/wiki/Wobbly_Life_Wiki"
+    "imageSource": "lokale Datei",
+    "imagePage": "Data/geist.jpeg",
+    "imgUrl": "Data/geist.jpeg"
   },
   {
     "id": 110,
@@ -1404,8 +1405,9 @@
     "emoji": "🦖",
     "color": "#f2c94c",
     "img": "Wobblysaurus_Rex",
-    "imageSource": "placeholder",
-    "imagePage": "https://wobbly-life.fandom.com/wiki/Wobbly_Life_Wiki"
+    "imageSource": "lokale Datei",
+    "imagePage": "Data/wobblysaurus_rex.jpeg",
+    "imgUrl": "Data/wobblysaurus_rex.jpeg"
   },
   {
     "id": 111,
@@ -1418,8 +1420,9 @@
     "emoji": "👨‍🌾",
     "color": "#f2c94c",
     "img": "Farmer",
-    "imageSource": "placeholder",
-    "imagePage": "https://wobbly-life.fandom.com/wiki/Wobbly_Life_Wiki"
+    "imageSource": "Wobbly Life Wiki",
+    "imagePage": "https://static.wikia.nocookie.net/wobbly-life/images/e/e9/Farm_outfit.jpg/revision/latest/scale-to-width-down/1000?cb=20210327215859",
+    "imgUrl": "https://static.wikia.nocookie.net/wobbly-life/images/e/e9/Farm_outfit.jpg/revision/latest/scale-to-width-down/1000?cb=20210327215859"
   },
   {
     "id": 112,
@@ -1447,8 +1450,9 @@
     "emoji": "👮",
     "color": "#f2c94c",
     "img": "Police_Officer",
-    "imageSource": "placeholder",
-    "imagePage": "https://wobbly-life.fandom.com/wiki/Wobbly_Life_Wiki"
+    "imageSource": "lokale Datei",
+    "imagePage": "Data/police.jpeg",
+    "imgUrl": "Data/police.jpeg"
   },
   {
     "id": 114,
@@ -1461,8 +1465,9 @@
     "emoji": "🧑‍⚕️",
     "color": "#f2c94c",
     "img": "Doctor",
-    "imageSource": "placeholder",
-    "imagePage": "https://wobbly-life.fandom.com/wiki/Wobbly_Life_Wiki"
+    "imageSource": "lokale Datei",
+    "imagePage": "Data/Doctor.jpeg",
+    "imgUrl": "Data/Doctor.jpeg"
   },
   {
     "id": 115,
